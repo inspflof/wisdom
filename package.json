@@ -1,0 +1,31 @@
+{
+  "name": "wisdom",
+  "version": "1.0.0",
+  "description": "Wisdom is a free and open source streaming platform",
+  "homepage": "https://github.com/inspflof/wisdom#readme",
+  "bugs": {
+    "url": "https://github.com/inspflof/wisdom/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inspflof/wisdom.git"
+  },
+  "license": "MIT",
+  "author": "Flo",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.20.0",
+    "vid-streamer": "^1.0.0"
+  }
+}
