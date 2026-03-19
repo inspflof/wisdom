@@ -1,0 +1,39 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.video-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.video-js {
+    width: 100% !important;
+    aspect-ratio: 16 / 9;
+}
+
+.playBtn {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    z-index: 10;
+    padding: 0;
+    margin: 10px 10px 20px 0;
+    -webkit-filter: invert(1); /* safari 6.0 - 9.0 */
+    filter: invert(1);
+    max-width: 100px;
+    min-width: 20px;
+}
+
+.progressBar {
+    background: red;
+    width: 100%;
+    height: 20px;
+}
+
+.currentTime {
+    background: rebeccapurple;
+    height: 20px;
+}

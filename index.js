@@ -13,6 +13,11 @@ app.set("view engine", "ejs")
 const assetsPath = path.join(__dirname, "public")
 app.use(express.static(assetsPath))
 
+app.use('/scripts', express.static(path.join(__dirname, 'node_modules/video.js/dist')))
+
+import indexRoute from "./routes/index.js"
+app.use("/", indexRoute)
+
 app.listen(port, (err) => {
     if(err){
         throw err
