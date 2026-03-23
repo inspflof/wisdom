@@ -1,33 +1,72 @@
+const progressBarActions = {
+    getRatio(event, progressBar){
+        return Math.max(0, Math.min(1 ,(event.clientX - progressBar.getBoundingClientRect().left) / progressBar.getBoundingClientRect().width))
+    },
 
-const btn = document.querySelector(".playBtn")
+    changeCurrentTime(videoPlayer, ratio) {
+        const duration = videoPlayer.duration()
+        if(duration){
+            const time = videoPlayer.duration() * ratio
+            videoPlayer.currentTime(time)
+        }
+    },
 
-btn.addEventListener("click", () => {
-    if(player.paused()){
-        player.play()
-    } else {
-        player.pause()
+    refresh(currentTimeBar, ratio) {
+        currentTimeBar.style.width = `${ratio * 100}%`
+    }
+}
+
+const progressBar = document.querySelector(".progressBar")
+const currentTimeBar = document.querySelector(".currentTime")
+let isDragging = false
+
+player.on("timeupdate", () => {
+    if(!isDragging) {
+        progressBarActions.refresh(currentTimeBar, player.currentTime() / player.duration())
     }
 })
 
+progressBar.addEventListener("pointerdown", (event) => {
+    isDragging = true
+    progressBar.setPointerCapture(event.pointerId)
+
+    progressBarActions.refresh(currentTimeBar, progressBarActions.getRatio(event, progressBar))
+})
+
+progressBar.addEventListener("pointermove", (event) => {
+    if(isDragging){
+        progressBarActions.refresh(currentTimeBar, progressBarActions.getRatio(event, progressBar))
+    }
+})
+
+progressBar.addEventListener("pointerup", (event) => {
+    if(isDragging){
+        isDragging = false
+        progressBarActions.changeCurrentTime(player, progressBarActions.getRatio(event, progressBar))
+        progressBar.releasePointerCapture(event.pointerId)
+    }
+})
+
+const btnsActions = {
+    togglePlayPause(videoPlayer) {
+        if(videoPlayer.paused()){
+            videoPlayer.play()
+        } else {
+            videoPlayer.pause()
+        }
+    }
+}
+
+const playPauseBtn = document.querySelector(".playBtn")
+
+playPauseBtn.addEventListener("click", () => {
+    btnsActions.togglePlayPause(player)
+})
+
 player.on("play", () => {
-    btn.setAttribute("src", "/assets/icons/pauseBtn.svg")
+    playPauseBtn.setAttribute("src", "/assets/icons/pauseBtn.svg")
 })
 
 player.on("pause", () => {
-    btn.setAttribute("src", "/assets/icons/playBtn.svg")
-})
-
-const currentProgressBar = document.querySelector(".currentTime")
-
-player.on("timeupdate", () => {
-    currentProgress = player.currentTime() / player.duration()
-    currentProgressBar.style.width = `${currentProgress * 100}%`
-})
-
-const progressBar = document.querySelector(".progressBar")
-
-progressBar.addEventListener("click", () => {
-    const ratio = Math.max(0, Math.min(1 ,(event.clientX - progressBar.getBoundingClientRect().left) / progressBar.getBoundingClientRect().width))
-    const time = player.duration() * ratio
-    player.currentTime(time)
+    playPauseBtn.setAttribute("src", "/assets/icons/playBtn.svg")
 })

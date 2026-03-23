@@ -42,10 +42,10 @@ body {
 .progressBar {
     background: red;
     width: 100%;
-    height: 20px;
+    height: 50px;
 }
 
 .currentTime {
     background: rebeccapurple;
-    height: 20px;
+    height: 50px;
 }
