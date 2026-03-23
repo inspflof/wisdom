@@ -3,6 +3,8 @@ body {
     margin: 0;
 }
 
+/* video */
+
 .video-container {
     position: relative;
     display: inline-block;
@@ -26,26 +28,43 @@ body {
     object-fit: contain; /* Garantit que l'image n'est pas déformée */
 }
 
-.playBtn {
+/* controls */
+
+.controls {
     position: absolute;
-    bottom: 10px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 10;
+    /* background: rgba(0,0,0,0); */
+    backdrop-filter: blur(10px);
+    mask-image: linear-gradient(to bottom, transparent, black 10%);
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+}
+
+.playBtn {
     padding: 0;
-    margin: 10px 10px 20px 0;
-    -webkit-filter: invert(1); /* safari 6.0 - 9.0 */
+    margin: 5px 10px 0 10px;
+    height: 2vh;
     filter: invert(1);
-    max-width: 100px;
-    min-width: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
 }
 
 .progressBar {
     background: red;
     width: 100%;
-    height: 50px;
+    height: 2vh;
+    cursor: pointer;
+    flex-grow: 1;
 }
 
 .currentTime {
     background: rebeccapurple;
-    height: 50px;
+    height: 100%;
 }
