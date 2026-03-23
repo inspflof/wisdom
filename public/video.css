@@ -39,7 +39,7 @@ body {
     /* background: rgba(0,0,0,0); */
     backdrop-filter: blur(10px);
     mask-image: linear-gradient(to bottom, transparent, black 10%);
-    padding: 10px;
+    padding: 2vh 0 0 0;
     width: 100%;
     display: flex;
     flex-direction: column-reverse;
@@ -48,8 +48,8 @@ body {
 
 .playBtn {
     padding: 0;
-    margin: 5px 10px 0 10px;
-    height: 2vh;
+    margin: 0.5vh 1vw 0 1vw;
+    height: 3vh;
     filter: invert(1);
     cursor: pointer;
     background: none;
@@ -57,14 +57,27 @@ body {
 }
 
 .progressBar {
-    background: red;
+    background: rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 2vh;
     cursor: pointer;
     flex-grow: 1;
 }
 
+.buffer {
+    background-color: rgba(100, 100, 100, 0.3);
+    height: 2vh;
+    width: 0%;
+    position: absolute;
+    z-index: 1;
+    border-radius: 5px;
+}
+
 .currentTime {
-    background: rebeccapurple;
-    height: 100%;
+    background: rgba(255, 255, 255, 1);
+    height: 2vh;
+    width: 0%;
+    position: absolute;
+    z-index: 2;
+    border-radius: 5px;
 }

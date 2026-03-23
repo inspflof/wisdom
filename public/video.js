@@ -13,17 +13,24 @@ const progressBarActions = {
 
     refresh(currentTimeBar, ratio) {
         currentTimeBar.style.width = `${ratio * 100}%`
+
     }
 }
 
 const progressBar = document.querySelector(".progressBar")
 const currentTimeBar = document.querySelector(".currentTime")
+const buffer = document.querySelector(".buffer")
 let isDragging = false
 
 player.on("timeupdate", () => {
     if(!isDragging) {
         progressBarActions.refresh(currentTimeBar, player.currentTime() / player.duration())
     }
+})
+
+player.on("progress", () => {
+    const ratio = player.bufferedEnd() / player.duration()
+    buffer.style.width = `${ratio * 100}%`
 })
 
 progressBar.addEventListener("pointerdown", (event) => {
