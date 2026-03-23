@@ -57,7 +57,12 @@ const btnsActions = {
     }
 }
 
+const video = document.querySelector(".video-js")
 const playPauseBtn = document.querySelector(".playBtn")
+
+video.addEventListener("click", () => {
+    btnsActions.togglePlayPause(player)
+})
 
 playPauseBtn.addEventListener("click", () => {
     btnsActions.togglePlayPause(player)
