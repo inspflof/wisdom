@@ -1,3 +1,21 @@
+function formatDuree(secondes) {
+    const totalS = Math.floor(secondes)
+
+    const h = Math.floor(totalS / 3600)
+    const m = Math.floor((totalS % 3600) / 60)
+    const s = totalS % 60
+
+    const format = (n) => String(n).padStart(2, '0')
+
+    if (h > 0){
+        return `${h}:${format(m)}:${format(s)}`
+    } else if (m > 0) {
+        return `${m}:${format(s)}`
+    } else {
+        return `0:${format(s)}`
+    }
+} 
+
 const progressBarActions = {
     getRatio(event, progressBar){
         return Math.max(0, Math.min(1 ,(event.clientX - progressBar.getBoundingClientRect().left) / progressBar.getBoundingClientRect().width))
@@ -13,7 +31,13 @@ const progressBarActions = {
 
     refresh(currentTimeBar, ratio) {
         currentTimeBar.style.width = `${ratio * 100}%`
+    }
+}
 
+const controlActions = {
+    refresh(videoPlayer, currentTime, videoDuration) {
+        currentTime.innerText = formatDuree(videoPlayer.currentTime())
+        videoDuration.innerText = formatDuree(videoPlayer.duration())
     }
 }
 
@@ -22,9 +46,13 @@ const currentTimeBar = document.querySelector(".currentTime")
 const buffer = document.querySelector(".buffer")
 let isDragging = false
 
+const currentTime = document.querySelector(".video-current-time")
+const videoDuration = document.querySelector(".video-duration")
+
 player.on("timeupdate", () => {
     if(!isDragging) {
         progressBarActions.refresh(currentTimeBar, player.currentTime() / player.duration())
+        controlActions.refresh(player, currentTime, videoDuration)
     }
 })
 
