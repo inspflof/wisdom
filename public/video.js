@@ -57,8 +57,7 @@ player.on("timeupdate", () => {
 })
 
 player.on("progress", () => {
-    const ratio = player.bufferedEnd() / player.duration()
-    buffer.style.width = `${ratio * 100}%`
+    progressBarActions.refresh(buffer, player.bufferedEnd() / player.duration())
 })
 
 progressBar.addEventListener("pointerdown", (event) => {

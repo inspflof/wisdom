@@ -68,22 +68,25 @@ body {
     flex-grow: 1;
 }
 
-.buffer {
-    background-color: rgba(255, 255, 255, 0.4);
+.progressBar > * {
     height: 2vh;
     width: 0%;
     position: absolute;
-    z-index: 1;
     border-radius: 5px;
+}
+
+.buffer {
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 1;
 }
 
 .currentTime {
     background: rgba(255, 255, 255, 1);
-    height: 2vh;
-    width: 0%;
-    position: absolute;
     z-index: 2;
-    border-radius: 5px;
+}
+
+.seek-bar {
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .control-btns {
@@ -102,3 +105,4 @@ body {
     height: 3vh;
     padding: 0.3vh 0 0 0;
 }
+
