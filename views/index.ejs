@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widsom</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <% if (locals.movies) { %>
+        <div class="movies-list">
+            <% movies.forEach(movie => { %>
+                <div class="movie">
+                    <div class="movie-img">
+                        <img src="<%= movie.primaryImage.url %>" alt="<%= movie.originalTitle %> image">
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</body>
+</html>

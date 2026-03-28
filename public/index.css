@@ -1,0 +1,27 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2px;
+}
+
+.movie {
+    width: 20%;
+}
+
+.movie-img {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.movie-img > img{
+    width: 100%;
+    aspect-ratio: 2 / 3; 
+    object-fit: cover;
+}

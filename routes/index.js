@@ -1,7 +1,8 @@
 import { Router } from "express";
 const route = Router()
 
-route.get("/", (req, res) => res.send("hello"))
+import indexController from "../controllers/index.js"
+route.get("/", indexController.getIndexGet)
 
 import videoRoute from "./video.js"
 route.use("/video", videoRoute)
