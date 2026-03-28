@@ -44,6 +44,8 @@ const controlActions = {
 const progressBar = document.querySelector(".progressBar")
 const currentTimeBar = document.querySelector(".currentTime")
 const buffer = document.querySelector(".buffer")
+const seekBar = document.querySelector(".seek-bar")
+
 let isDragging = false
 
 const currentTime = document.querySelector(".video-current-time")
@@ -71,6 +73,7 @@ progressBar.addEventListener("pointermove", (event) => {
     if(isDragging){
         progressBarActions.refresh(currentTimeBar, progressBarActions.getRatio(event, progressBar))
     }
+    progressBarActions.refresh(seekBar, progressBarActions.getRatio(event, progressBar))
 })
 
 progressBar.addEventListener("pointerup", (event) => {
@@ -79,6 +82,14 @@ progressBar.addEventListener("pointerup", (event) => {
         progressBarActions.changeCurrentTime(player, progressBarActions.getRatio(event, progressBar))
         progressBar.releasePointerCapture(event.pointerId)
     }
+})
+
+progressBar.addEventListener("pointerover", () => {
+    isOnProgressBar = true
+})
+
+progressBar.addEventListener("pointerleave", () => {
+    progressBarActions.refresh(seekBar, 0)
 })
 
 const btnsActions = {
