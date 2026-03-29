@@ -1,0 +1,13 @@
+<% if (locals.movies) { %>
+    <div class="movies-list">
+        <% movies.forEach(movie => { %>
+            <div class="movie">
+                <div class="movie-img">
+                    <img src="<%= movie.primaryImage.url %>" alt="<%= movie.originalTitle %> image">
+                </div>
+            </div>
+        <% }) %>
+    </div>
+<% } else { %>
+    <div>Unable to fetch data</div>
+<% } %>

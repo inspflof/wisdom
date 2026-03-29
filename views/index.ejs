@@ -8,16 +8,6 @@
     <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <% if (locals.movies) { %>
-        <div class="movies-list">
-            <% movies.forEach(movie => { %>
-                <div class="movie">
-                    <div class="movie-img">
-                        <img src="<%= movie.primaryImage.url %>" alt="<%= movie.originalTitle %> image">
-                    </div>
-                </div>
-            <% }) %>
-        </div>
-    <% } %>
+    <%- include("movies/movies-list") %>
 </body>
 </html>
