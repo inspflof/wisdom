@@ -13,8 +13,25 @@ datasource db {
   provider = "postgresql"
 }
 
-model Videos {
+model Movies {
   id    Int @id @default(autoincrement())
+  imdbId String @unique
   name  String
-  url   String
+  url String
+}
+
+model Series {
+  id    Int @id @default(autoincrement())
+  imdbId String @unique
+  name  String
+  episodes Episodes[]
+}
+
+model Episodes {
+  id Int @id @default(autoincrement())
+  imdbId String @unique
+  name String
+  serie Series @relation(fields: [serieId], references: [id])
+  serieId Int
+  url String
 }

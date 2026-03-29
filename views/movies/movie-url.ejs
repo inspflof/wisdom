@@ -1,0 +1,18 @@
+<% if (locals.movie) { %>
+    <% if (locals.localMovie) { %>
+       <div>
+          Url : <%= localMovie.url %>
+       </div>
+    <% } else { %>
+       <div>
+          <div>Add movie</div>
+          <form action="/movie/<%= movie.id %>" method="post">
+             <label for="url"></label>
+             <input type="text" name="url" id="url">
+
+             <input type="hidden" name="movieTitle" value="<%= movie.primaryTitle %>">
+             <button type="submit">Add</button>
+          </form>
+       </div>
+    <% } %>
+<% } %>

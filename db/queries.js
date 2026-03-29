@@ -1,29 +1,37 @@
 import { prisma } from "../lib/prisma.js"
 
-const videos = {
-    async add(name, url) {
-        const video = await prisma.videos.create({
+const movie = {
+    async add(imdbId, name, url) {
+        const movie = await prisma.movies.create({
             data: {
                 name: String(name),
+                imdbId: String(imdbId),
                 url: String(url)
             }
         })
-        return video    
+        return movie    
     },
 
     async getAll() {
-        const videos = await prisma.videos.findMany()
-        return videos
+        const movies = await prisma.movies.findMany()
+        return movies
+    },
+
+    async get(imdbId) {
+        const movie = await prisma.movies.findUnique({
+            where: { imdbId: imdbId },
+        })
+        return movie
     },
 
     async delete(id) {
-        const deleteVideo = await prisma.videos.delete({
+        const deleteMovie = await prisma.movies.delete({
             where: {
                 id: Number(id)
             }
         })
-        return deleteVideo
+        return deleteMovie
     }
 }
 
-export { videos }
+export { movie }
