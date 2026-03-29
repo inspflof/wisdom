@@ -1,9 +1,9 @@
 import * as db from "../db/queries.js"
 
-const videoController = {
+const controller = {
     async getVideoGet(req, res) {
         res.render("video")
     }
 }
 
-export default videoController
+export default controller

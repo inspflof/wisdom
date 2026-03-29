@@ -1,11 +1,11 @@
 <% if (locals.movies) { %>
     <div class="movies-list">
         <% movies.forEach(movie => { %>
-            <div class="movie">
+            <a class="movie" href="/movie/<%= movie.id %>">
                 <div class="movie-img">
                     <img src="<%= movie.primaryImage.url %>" alt="<%= movie.originalTitle %> image">
                 </div>
-            </div>
+            </a>
         <% }) %>
     </div>
 <% } else { %>

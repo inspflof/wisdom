@@ -1,6 +1,6 @@
 import * as db from "../db/queries.js"
 
-const indexController = {
+const controller = {
     async getIndexGet(req, res) {
         try {
             const response = await fetch("https://api.imdbapi.dev/titles")
@@ -15,4 +15,4 @@ const indexController = {
     }
 }
 
-export default indexController
+export default controller
