@@ -17,7 +17,14 @@ const movie = {
         return movies
     },
 
-    async get(imdbId) {
+    async get(id) {
+        const movie = await prisma.movies.findUnique({
+            where: { id: id },
+        })
+        return movie
+    },
+
+        async getImdb(imdbId) {
         const movie = await prisma.movies.findUnique({
             where: { imdbId: imdbId },
         })

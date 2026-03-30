@@ -6,7 +6,7 @@
     <title>Document</title>
     <link href="/scripts/video-js.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../index.css">
-    <script src="./scripts/video.js" defer></script>
+    <script src="/scripts/video.js" defer></script>
     <link rel="shortcut icon" href="../assets/icons/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -19,8 +19,10 @@
       data-setup='{}'
       >
       <source 
-      src="https://tests.devflo.freeddns.org/tests/The%20Office/S01/E01/playlist.m3u8" 
-      type="application/x-mpegURL" 
+      <% if (locals.video) { %>
+        src="https://tests.devflo.freeddns.org/tests<%= video.url %>" 
+      <% } %>
+        type="application/x-mpegURL" 
       />
     </video>
   

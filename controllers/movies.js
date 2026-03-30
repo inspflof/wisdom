@@ -8,7 +8,7 @@ const controller = {
             const response = await fetch(`https://api.imdbapi.dev/titles/${movieId}`)
             const moviesDataJson = await response.json()
 
-            const movie = await db.movie.get(moviesDataJson.id)
+            const movie = await db.movie.getImdb(moviesDataJson.id)
 
             res.render("movies/movie", { movie: moviesDataJson, localMovie: movie})
         } catch (err) {

@@ -2,6 +2,7 @@
     <% if (locals.localMovie) { %>
        <div>
           Url : <%= localMovie.url %>
+          <a href="/video/<%= localMovie.id %>">Watch now</a>
        </div>
     <% } else { %>
        <div>
